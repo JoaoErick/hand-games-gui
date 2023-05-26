@@ -1,0 +1,58 @@
+#:import utils kivy.utils
+#:import date datetime.date
+
+FloatLayout:
+
+    RelativeLayout:
+        Image:
+            size_hint: None, None
+            width: 200
+            height: 200
+            pos_hint: {'center_x': 0.5, 'center_y': 0.78}
+            source: "icons/hand-games-rounded.png"
+
+        MDRaisedButton:
+            id: btn_play
+            text: "JOGAR"
+            text_color: utils.get_color_from_hex('#2F2F2F')
+            font_name: "fonts/Rajdhani-Bold.ttf"
+            font_size: 32
+            padding: 96, 14
+            md_bg_color: utils.get_color_from_hex('#D9D9D9')
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_release: app.presser(btn_play)
+
+        MDRaisedButton:
+            id: btn_options
+            text: "OPÇÕES"
+            text_color: utils.get_color_from_hex('#2F2F2F')
+            font_name: "fonts/Rajdhani-Bold.ttf"
+            font_size: 32
+            padding: 88, 14
+            md_bg_color: utils.get_color_from_hex('#D9D9D9')
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.35}
+            on_release: app.presser(btn_options)
+
+        MDRaisedButton:
+            id: btn_quit
+            text: "SAIR"
+            text_color: utils.get_color_from_hex('#2F2F2F')
+            font_name: "fonts/Rajdhani-Bold.ttf"
+            font_size: 32
+            padding: 108, 14
+            md_bg_color: utils.get_color_from_hex('#D9D9D9')
+            size_hint: None, None
+            pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+            on_release: app.presser(btn_quit)
+
+    MDLabel:
+        text: f"Copyright © { date.today().year } Hand Games. Todos os direitos reservados."
+        text_color: utils.get_color_from_hex('#2F2F2F')
+        font_name: "fonts/Rajdhani-Regular.ttf"
+        font_size: 12
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        pos_hint: {'center_x': 0.5, 'y': -.03}
