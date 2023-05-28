@@ -7,7 +7,7 @@ class HomeApp(MDApp):
         self.icon = "icons/hand-games-rounded.png"
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Gray"
-        return Builder.load_file('toe.kv')
+        return Builder.load_file('pages/Home/home.kv')
 
-    def presser(self, button):
-        pass
+    def close_app(self):
+        self.stop()

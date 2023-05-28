@@ -1,7 +1,7 @@
 import kivymd
 from kivymd.app import MDApp
 
-from pages import HomeApp
+from pages import open_home
 
 if __name__ == '__main__':
-    HomeApp().run()
+    open_home()

@@ -1,0 +1,159 @@
+#:import utils kivy.utils
+#:import date datetime.date
+#:import open_home pages.open_home
+
+FloatLayout:
+
+    MDRectangleFlatIconButton:
+        id: btn_back
+        md_bg_color: utils.get_color_from_hex('#D9D9D9')
+        pos_hint: {'center_x': 0.05, 'center_y': 0.9}
+        on_press: open_home(app)
+
+        Image:
+            source: "icons/arrow-back.png"
+            size_hint: None, None
+            size: dp(60), dp(60)
+            pos_hint: {'center_x': 0.5, 'y': 0.3}
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        pos_hint: {'x': 0.37, 'center_y': 0.7}
+
+        Image:
+            size_hint: None, None
+            width: 64
+            height: 64
+            source: "icons/apple-arcade.png"
+            halign: "center"
+            pos_hint: {'center_x': 0.5, 'y': 0.95}
+
+        MDLabel:
+            text: "Jogos"
+            text_color: utils.get_color_from_hex('#2F2F2F')
+            font_name: "fonts/Rajdhani-Regular.ttf"
+            font_size: 48
+            bold: True
+            width: 140
+            size_hint: None, None
+            halign: "center"
+            padding: 8, 0
+            pos_hint: {'center_x': 0.5, 'y': 0.8}
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        spacing: 24
+        pos_hint: {'x': 0.13, 'center_y': 0.5}
+
+        MDRectangleFlatIconButton:
+            id: btn_quit
+            padding: 84, 115
+            pos_hint: {'center_y': 0.2}
+
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex('#D9D9D9')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: 200, 200
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+
+                Image:
+                    source: "icons/jokenpo.png"
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {'center_x': 0.5, 'y': 0.3}
+
+                MDLabel:
+                    text: "JOKENPÔ"
+                    halign: "center"
+                    valign: "middle"
+                    text_color: utils.get_color_from_hex('#2F2F2F')
+                    font_name: "fonts/Rajdhani-Bold.ttf"
+                    font_size: dp(24)
+
+        MDRectangleFlatIconButton:
+            id: btn_quit
+            padding: 84, 115
+            pos_hint: {'center_y': 0.2}
+
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex('#D9D9D9')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: 200, 200
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+
+                Image:
+                    source: "icons/even-odd.png"
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {'center_x': 0.5, 'y': 0.3}
+
+                MDLabel:
+                    text: "PAR OU ÍMPAR"
+                    halign: "center"
+                    valign: "middle"
+                    text_color: utils.get_color_from_hex('#2F2F2F')
+                    font_name: "fonts/Rajdhani-Bold.ttf"
+                    font_size: dp(24)
+
+        MDRectangleFlatIconButton:
+            id: btn_quit
+            padding: 84, 115
+            pos_hint: {'center_y': 0.2}
+
+            canvas.before:
+                Color:
+                    rgba: utils.get_color_from_hex('#D9D9D9')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: None, None
+                size: 200, 200
+                pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+
+                Image:
+                    source: "icons/nearest-number.png"
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {'center_x': 0.5, 'y': 0.3}
+
+                MDLabel:
+                    text: "\nNÚMERO MAIS \nPRÓXIMO"
+                    halign: "center"
+                    valign: "middle"
+                    text_color: utils.get_color_from_hex('#2F2F2F')
+                    font_name: "fonts/Rajdhani-Bold.ttf"
+                    font_size: dp(24)
+
+
+    MDLabel:
+        text: f"Copyright © { date.today().year } Hand Games. Todos os direitos reservados."
+        text_color: utils.get_color_from_hex('#2F2F2F')
+        font_name: "fonts/Rajdhani-Regular.ttf"
+        font_size: 12
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        pos_hint: {'center_x': 0.5, 'y': -.03}

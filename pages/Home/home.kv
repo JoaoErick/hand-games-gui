@@ -1,5 +1,6 @@
 #:import utils kivy.utils
 #:import date datetime.date
+#:import open_games pages.open_games
 
 FloatLayout:
 
@@ -21,7 +22,7 @@ FloatLayout:
             md_bg_color: utils.get_color_from_hex('#D9D9D9')
             size_hint: None, None
             pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-            on_release: app.presser(btn_play)
+            on_release: open_games(app)
 
         MDRaisedButton:
             id: btn_options
@@ -45,7 +46,7 @@ FloatLayout:
             md_bg_color: utils.get_color_from_hex('#D9D9D9')
             size_hint: None, None
             pos_hint: {'center_x': 0.5, 'center_y': 0.2}
-            on_release: app.presser(btn_quit)
+            on_release: app.close_app()
 
     MDLabel:
         text: f"Copyright © { date.today().year } Hand Games. Todos os direitos reservados."
