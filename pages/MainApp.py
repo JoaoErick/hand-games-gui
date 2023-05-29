@@ -1,7 +1,7 @@
 from kivymd.app import MDApp
 from kivy.lang import Builder
 
-from pages import HomeApp, GamesApp, JokenpoApp
+from pages import HomeApp, GamesApp, JokenpoApp, EvenOddApp
 
 def open_home(app = None):
     if app != None:
@@ -18,7 +18,7 @@ def open_jokenpo(app):
 
 def open_even_odd(app):
     app.stop()
-    JokenpoApp().run()
+    EvenOddApp().run()
 
 def back_games(app, webcam, clock):
     clock.stop_clock()

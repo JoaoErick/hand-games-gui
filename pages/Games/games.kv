@@ -2,6 +2,7 @@
 #:import date datetime.date
 #:import open_home pages.open_home
 #:import open_jokenpo pages.open_jokenpo
+#:import open_even_odd pages.open_even_odd
 
 FloatLayout:
 
@@ -54,7 +55,7 @@ FloatLayout:
         pos_hint: {'x': 0.13, 'center_y': 0.5}
 
         MDRectangleFlatIconButton:
-            id: btn_quit
+            id: btn_jokenpo
             padding: 84, 115
             pos_hint: {'center_y': 0.2}
             on_press: open_jokenpo(app)
@@ -88,9 +89,10 @@ FloatLayout:
                     font_size: dp(24)
 
         MDRectangleFlatIconButton:
-            id: btn_quit
+            id: btn_even_odd
             padding: 84, 115
             pos_hint: {'center_y': 0.2}
+            on_press: open_even_odd(app)
 
             canvas.before:
                 Color:
@@ -121,7 +123,7 @@ FloatLayout:
                     font_size: dp(24)
 
         MDRectangleFlatIconButton:
-            id: btn_quit
+            id: btn_nearest_number
             padding: 84, 115
             pos_hint: {'center_y': 0.2}
 
