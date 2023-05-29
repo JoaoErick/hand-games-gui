@@ -1,6 +1,7 @@
 #:import utils kivy.utils
 #:import date datetime.date
 #:import open_home pages.open_home
+#:import open_jokenpo pages.open_jokenpo
 
 FloatLayout:
 
@@ -33,6 +34,7 @@ FloatLayout:
 
         MDLabel:
             text: "Jogos"
+            theme_text_color: "Custom"
             text_color: utils.get_color_from_hex('#2F2F2F')
             font_name: "fonts/Rajdhani-Regular.ttf"
             font_size: 48
@@ -55,6 +57,7 @@ FloatLayout:
             id: btn_quit
             padding: 84, 115
             pos_hint: {'center_y': 0.2}
+            on_press: open_jokenpo(app)
 
             canvas.before:
                 Color:
@@ -79,6 +82,7 @@ FloatLayout:
                     text: "JOKENPÔ"
                     halign: "center"
                     valign: "middle"
+                    theme_text_color: "Custom"
                     text_color: utils.get_color_from_hex('#2F2F2F')
                     font_name: "fonts/Rajdhani-Bold.ttf"
                     font_size: dp(24)
@@ -111,6 +115,7 @@ FloatLayout:
                     text: "PAR OU ÍMPAR"
                     halign: "center"
                     valign: "middle"
+                    theme_text_color: "Custom"
                     text_color: utils.get_color_from_hex('#2F2F2F')
                     font_name: "fonts/Rajdhani-Bold.ttf"
                     font_size: dp(24)
@@ -143,6 +148,7 @@ FloatLayout:
                     text: "\nNÚMERO MAIS \nPRÓXIMO"
                     halign: "center"
                     valign: "middle"
+                    theme_text_color: "Custom"
                     text_color: utils.get_color_from_hex('#2F2F2F')
                     font_name: "fonts/Rajdhani-Bold.ttf"
                     font_size: dp(24)
@@ -150,6 +156,7 @@ FloatLayout:
 
     MDLabel:
         text: f"Copyright © { date.today().year } Hand Games. Todos os direitos reservados."
+        theme_text_color: "Custom"
         text_color: utils.get_color_from_hex('#2F2F2F')
         font_name: "fonts/Rajdhani-Regular.ttf"
         font_size: 12
