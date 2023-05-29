@@ -1,6 +1,6 @@
 #:import utils kivy.utils
 #:import date datetime.date
-#:import open_games pages.open_games
+#:import back_games pages.back_games
 
 FloatLayout:
 
@@ -8,7 +8,7 @@ FloatLayout:
         id: btn_back
         md_bg_color: utils.get_color_from_hex('#D9D9D9')
         pos_hint: {'center_x': 0.05, 'center_y': 0.9}
-        on_press: open_games(app)
+        on_press: back_games(app, app.capture, app.clock)
 
         Image:
             source: "icons/arrow-back.png"

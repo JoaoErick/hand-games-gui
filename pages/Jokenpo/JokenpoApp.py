@@ -22,16 +22,19 @@ class JokenpoApp(MDApp):
         layout.add_widget(self.image)
 
         self.capture = cv.VideoCapture(0)
-        Clock.schedule_interval(self.load_video, 1.0/30.0)
+        self.clock = Clock
+        self.clock.schedule_interval(self.load_video, 1.0/30.0)
 
 
         return layout
 
     def load_video(self, *args):
         ret, frame = self.capture.read()
-        frame = imutils.resize(frame, width=500)
-        self.image_frame = frame
-        buffer = cv.flip(frame, -1).tostring()
-        texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt='bgr')
-        texture.blit_buffer(buffer, colorfmt="bgr", bufferfmt="ubyte")
-        self.image.texture = texture
+
+        if ret:
+            frame = imutils.resize(frame, width=500)
+            self.image_frame = frame
+            buffer = cv.flip(frame, -1).tostring()
+            texture = Texture.create(size=(frame.shape[1], frame.shape[0]), colorfmt='bgr')
+            texture.blit_buffer(buffer, colorfmt="bgr", bufferfmt="ubyte")
+            self.image.texture = texture
