@@ -1,0 +1,68 @@
+#:import utils kivy.utils
+#:import date datetime.date
+#:import open_games pages.open_games
+
+FloatLayout:
+
+    MDRectangleFlatIconButton:
+        id: btn_back
+        md_bg_color: utils.get_color_from_hex('#D9D9D9')
+        pos_hint: {'center_x': 0.05, 'center_y': 0.9}
+        on_press: open_games(app)
+
+        Image:
+            source: "icons/arrow-back.png"
+            size_hint: None, None
+            size: dp(60), dp(60)
+            pos_hint: {'center_x': 0.5, 'y': 0.3}
+
+    BoxLayout:
+        orientation: "horizontal"
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        pos_hint: {'x': 0.33, 'center_y': 0.7}
+
+        Image:
+            size_hint: None, None
+            width: 64
+            height: 64
+            source: "icons/jokenpo.png"
+            halign: "center"
+            pos_hint: {'center_x': 0.5, 'y': 0.95}
+
+        MDLabel:
+            text: "Jokenpô"
+            theme_text_color: "Custom"
+            text_color: utils.get_color_from_hex('#2F2F2F')
+            font_name: "fonts/Rajdhani-Regular.ttf"
+            font_size: 48
+            bold: True
+            width: 200
+            size_hint: None, None
+            halign: "center"
+            padding: 8, 0
+            pos_hint: {'center_x': 0.5, 'y': 0.8}
+
+    MDLabel:
+        text: f"O jogador venceu!"
+        font_name: "fonts/Rajdhani-Regular.ttf"
+        theme_text_color: "Custom"
+        text_color: utils.get_color_from_hex('#E58E0B')
+        font_size: 24
+        font_weight: "bold"
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        pos_hint: {'center_x': 0.5, 'y': 0.02}
+
+    MDLabel:
+        text: f"Copyright © { date.today().year } Hand Games. Todos os direitos reservados."
+        theme_text_color: "Custom"
+        text_color: utils.get_color_from_hex('#2F2F2F')
+        font_name: "fonts/Rajdhani-Regular.ttf"
+        font_size: 12
+        size_hint: None, None
+        width: root.width
+        halign: "center"
+        pos_hint: {'center_x': 0.5, 'y': -.03}
