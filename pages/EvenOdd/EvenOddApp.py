@@ -6,9 +6,9 @@ from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.image import Image
 from kivy.graphics.texture import Texture
-from cv2 import VideoCapture, flip, putText, FONT_HERSHEY_PLAIN
+from cv2 import VideoCapture, flip
 import imutils
-from numpy import ndarray, fliplr
+from numpy import ndarray
 from handtracking import HandDetector
 from handtracking.utils import detect_skin, statistical_mode
 
@@ -74,21 +74,7 @@ class EvenOddApp(MDApp):
                     
                     self.amount_fingers.clear()
 
-            # TODO: Colocar flag das opções de ativação do FPS
-            flip(
-                putText(
-                    image_with_landmarks, 
-                    f"FPS: {int(fps)}", 
-                    (10, 40), 
-                    FONT_HERSHEY_PLAIN, 
-                    2, 
-                    (0, 255, 255), 
-                    3
-                ), 
-                0
-            )
-
-            buffer = flip(image_with_landmarks, 0).tostring()
+            buffer = flip(image_with_landmarks, -1).tostring()
             
             texture = Texture.create(
                 size = (
