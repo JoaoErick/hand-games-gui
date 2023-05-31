@@ -23,7 +23,7 @@ class EvenOddApp(MDApp):
         self.start_game_flag: bool = False
         self.timer_duration_even_odd: int = 3
         self.amount_fingers: List[int] = []
-        self.hand_detector: HandDetector = HandDetector()
+        self.hand_detector: HandDetector = HandDetector(max_num_hands=4)
         self.fps_start_time: float = 0 # TODO: Se não usar remover
         self.image = Image(
             pos_hint = {'center_x': 0.5, 'y': -0.05}
