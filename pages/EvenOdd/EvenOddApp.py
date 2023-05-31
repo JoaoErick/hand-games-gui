@@ -14,6 +14,8 @@ from handtracking.utils import detect_skin, statistical_mode
 
 from games import evenOdd
 
+global lbl_timer
+
 class EvenOddApp(MDApp):
     def build(self):
         self.title: str = "Hand Games"
@@ -21,6 +23,7 @@ class EvenOddApp(MDApp):
         self.theme_cls.theme_style: str = "Light"
         self.theme_cls.primary_palette: str = "Gray"
         self.start_game_flag: bool = False
+        self.fps_flag: bool = True
         self.timer_duration_even_odd: int = 3
         self.amount_fingers: List[int] = []
         self.hand_detector: HandDetector = HandDetector(max_num_hands=4)
@@ -63,16 +66,20 @@ class EvenOddApp(MDApp):
                 self.amount_fingers.append(number_fingers)
 
                 if(time_left <= 0):
-                    even_odd_flag = False
+                    self.start_game_flag = False
                     print(f"Dedos: {self.amount_fingers}")
                     print(f"Moda dedos: {statistical_mode(self.amount_fingers)}")
                     
                     if(evenOdd.is_even(statistical_mode(self.amount_fingers))):
-                        print("É par")
+                        self.root.ids.lbl_winner.text = "O jogador que escolheu PAR venceu!"
                     else:
-                        print("É ímpar")
+                        self.root.ids.lbl_winner.text = "O jogador que escolheu ÍMPAR venceu!"
                     
                     self.amount_fingers.clear()
+
+                    self.root.ids.lbl_timer.text = ""
+                else:
+                    self.root.ids.lbl_timer.text = f"Iniciando em: {int(time_left)}s"
 
             buffer = flip(image_with_landmarks, -1).tostring()
             
@@ -87,6 +94,10 @@ class EvenOddApp(MDApp):
             texture.blit_buffer(buffer, colorfmt="bgr", bufferfmt="ubyte")
             self.image.texture = texture
 
+            if(self.fps_flag):
+                self.root.ids.lbl_fps.text = f"FPS: {int(fps)}"
+
     def start_game(self) -> None:
+        self.root.ids.lbl_winner.text = ""
         self.start_game_flag = True
         self.start_timer: float = time()

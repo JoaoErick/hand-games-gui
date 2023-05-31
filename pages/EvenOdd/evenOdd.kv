@@ -16,6 +16,44 @@ FloatLayout:
             size: dp(60), dp(60)
             pos_hint: {'center_x': 0.5, 'y': 0.3}
 
+    MDRaisedButton:
+        id: btn_play
+        text: "JOGAR"
+        theme_text_color: "Custom"
+        text_color: utils.get_color_from_hex('#2F2F2F')
+        font_name: "fonts/Rajdhani-Bold.ttf"
+        font_size: 18
+        md_bg_color: utils.get_color_from_hex('#D9D9D9')
+        size_hint: None, None
+        pos_hint: {'x': 0.04, 'y': 0.5}
+        on_release: app.start_game()
+
+    MDLabel:
+        id: lbl_timer
+        text: ""
+        theme_text_color: "Custom"
+        text_color: utils.get_color_from_hex('#2F2F2F')
+        font_name: "fonts/Rajdhani-Regular.ttf"
+        font_size: 18
+        bold: True
+        width: 100
+        size_hint: None, None
+        halign: "center"
+        pos_hint: {'x': 0.03, 'y': 0.3}
+
+    MDLabel:
+        id: lbl_fps
+        text: ""
+        theme_text_color: "Custom"
+        text_color: utils.get_color_from_hex('#2F2F2F')
+        font_name: "fonts/Rajdhani-Regular.ttf"
+        font_size: 18
+        bold: True
+        width: 100
+        size_hint: None, None
+        halign: "center"
+        pos_hint: {'x': 0.84, 'y': 0.65}
+
     BoxLayout:
         orientation: "horizontal"
         size_hint: None, None
@@ -45,7 +83,8 @@ FloatLayout:
             pos_hint: {'center_x': 0.5, 'y': 0.8}
 
     MDLabel:
-        text: f"O jogador venceu!"
+        id: lbl_winner
+        text: ""
         font_name: "fonts/Rajdhani-Regular.ttf"
         theme_text_color: "Custom"
         text_color: utils.get_color_from_hex('#E58E0B')
