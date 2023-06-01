@@ -34,17 +34,17 @@ class Jokenpo:
                 if(moves[0] == moves[1]):
                     return "Empate!"
                 elif(moves[0] == 1 and moves[1] == 2):
-                    return "Jogador que jogou papel venceu!"
+                    return "Jogador que jogou PAPEL venceu!"
                 elif(moves[0] == 1 and moves[1] == 3):
-                    return "Jogador que jogou pedra venceu!"
+                    return "Jogador que jogou PEDRA venceu!"
                 elif(moves[0] == 2 and moves[1] == 1):
-                    return "Jogador que jogou papel venceu!"
+                    return "Jogador que jogou PAPEL venceu!"
                 elif(moves[0] == 2 and moves[1] == 3):
-                    return "Jogador que jogou tesoura venceu!"
+                    return "Jogador que jogou TESOURA venceu!"
                 elif(moves[0] == 3 and moves[1] == 1):
-                    return "Jogador que jogou pedra venceu!"
+                    return "Jogador que jogou PEDRA venceu!"
                 elif(moves[0] == 3 and moves[1] == 2):
-                    return "Jogador que jogou tesoura venceu!"
+                    return "Jogador que jogou TESOURA venceu!"
 
     def __player_move(self, hand: List[Dict]) -> int:
         """ Indica qual foi a jogada de um jogador.
