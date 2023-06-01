@@ -3,6 +3,7 @@
 #:import open_home pages.open_home
 #:import open_jokenpo pages.open_jokenpo
 #:import open_even_odd pages.open_even_odd
+#:import open_nearest_number pages.open_nearest_number
 
 FloatLayout:
 
@@ -110,7 +111,7 @@ FloatLayout:
                 Image:
                     source: "icons/even-odd.png"
                     size_hint: None, None
-                    size: dp(100), dp(100)
+                    size: dp(110), dp(110)
                     pos_hint: {'center_x': 0.5, 'y': 0.3}
 
                 MDLabel:
@@ -126,6 +127,7 @@ FloatLayout:
             id: btn_nearest_number
             padding: 84, 115
             pos_hint: {'center_y': 0.2}
+            on_press: open_nearest_number(app)
 
             canvas.before:
                 Color:
@@ -143,7 +145,7 @@ FloatLayout:
                 Image:
                     source: "icons/nearest-number.png"
                     size_hint: None, None
-                    size: dp(100), dp(100)
+                    size: dp(70), dp(70)
                     pos_hint: {'center_x': 0.5, 'y': 0.3}
 
                 MDLabel:
