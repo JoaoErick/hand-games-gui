@@ -27,7 +27,7 @@ class EvenOddApp(MDApp):
         self.timer_duration_even_odd: int = 3
         self.amount_fingers: List[int] = []
         self.hand_detector: HandDetector = HandDetector(max_num_hands=4)
-        self.fps_start_time: float = 0 # TODO: Se não usar remover
+        self.fps_start_time: float = 0
         self.image = Image(
             pos_hint = {'center_x': 0.5, 'y': -0.05}
         )
@@ -46,12 +46,12 @@ class EvenOddApp(MDApp):
         success, frame = self.capture.read()
 
         if(success):
-            image_to_process: ndarray = detect_skin(frame) # Talvez colocar dentro do if com a flag
+            image_to_process: ndarray = detect_skin(frame)
             frame = imutils.resize(frame, width=500)
 
             self.hand_detector.process_image(image_to_process)
             image_with_landmarks = self.hand_detector.draw_landmarks(frame)
-            number_fingers: int = self.hand_detector.number_fingers() # Talvez colocar dentro do if com a flag
+            number_fingers: int = self.hand_detector.number_fingers()
 
             fps_end_time: float = time()
             fps: float = 1/(fps_end_time - self.fps_start_time)
