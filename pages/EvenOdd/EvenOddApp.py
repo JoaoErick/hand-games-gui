@@ -7,7 +7,7 @@ from kivy.clock import Clock
 from kivy.uix.image import Image
 from kivy.graphics.texture import Texture
 from cv2 import VideoCapture, flip
-import imutils
+from imutils import resize
 from numpy import ndarray
 from handtracking import HandDetector
 from handtracking.utils import detect_skin, statistical_mode
@@ -24,7 +24,7 @@ class EvenOddApp(MDApp):
         self.theme_cls.primary_palette: str = "Gray"
         self.start_game_flag: bool = False
         self.fps_flag: bool = True
-        self.timer_duration_even_odd: int = 3
+        self.timer_duration: int = 3
         self.amount_fingers: List[int] = []
         self.hand_detector: HandDetector = HandDetector(max_num_hands=4)
         self.fps_start_time: float = 0
@@ -47,7 +47,7 @@ class EvenOddApp(MDApp):
 
         if(success):
             image_to_process: ndarray = detect_skin(frame)
-            frame = imutils.resize(frame, width=500)
+            frame = resize(frame, width=500)
 
             self.hand_detector.process_image(image_to_process)
             image_with_landmarks = self.hand_detector.draw_landmarks(frame)
@@ -61,7 +61,7 @@ class EvenOddApp(MDApp):
 
             if(self.start_game_flag):
                 elapsed_time = current - self.start_timer
-                time_left = self.timer_duration_even_odd - elapsed_time
+                time_left = self.timer_duration - elapsed_time
 
                 self.amount_fingers.append(number_fingers)
 
