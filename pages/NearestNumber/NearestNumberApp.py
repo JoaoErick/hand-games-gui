@@ -16,6 +16,8 @@ from games import nearestNumber
 
 global lbl_timer
 
+# TODO: configurar jogo
+
 class NearestNumberApp(MDApp):
     def build(self):
         self.title: str = "Hand Games"
