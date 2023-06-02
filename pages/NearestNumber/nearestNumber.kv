@@ -2,8 +2,6 @@
 #:import date datetime.date
 #:import back_games pages.back_games
 
-# TODO: adicionar botões para jogar o jogo
-
 FloatLayout:
 
     MDRectangleFlatIconButton:
@@ -22,10 +20,6 @@ FloatLayout:
         id: txt_player_one
         hint_text: "Jogador 1"
         mode: "rectangle"
-        max_text_length: 2
-        required: True
-        helper_text_mode: "on_error"
-        helper_text: "Informe o número!"
         size_hint: None, None
         pos_hint: {'x': 0.04, 'y': 0.5}
     
@@ -33,10 +27,6 @@ FloatLayout:
         id: txt_player_two
         hint_text: "Jogador 2"
         mode: "rectangle"
-        max_text_length: 2
-        required: True
-        helper_text_mode: "on_error"
-        helper_text: "Informe o número!"
         size_hint: None, None
         pos_hint: {'x': 0.04, 'y': 0.35}
 
@@ -52,19 +42,6 @@ FloatLayout:
         pos_hint: {'x': 0.04, 'y': 0.23}
         padding: 24, 0
         on_release: app.start_game()
-
-    MDLabel:
-        id: lbl_timer
-        text: ""
-        theme_text_color: "Custom"
-        text_color: utils.get_color_from_hex('#2F2F2F')
-        font_name: "fonts/Rajdhani-Regular.ttf"
-        font_size: 18
-        bold: True
-        width: 100
-        size_hint: None, None
-        halign: "center"
-        pos_hint: {'x': 0.03, 'y': 0.3}
 
     MDLabel:
         id: lbl_fps
@@ -88,8 +65,6 @@ FloatLayout:
 
         Image:
             size_hint: None, None
-            # width: 72
-            # height: 72
             size: 52, 52
             source: "icons/nearest-number.png"
             halign: "center"
@@ -109,13 +84,12 @@ FloatLayout:
             pos_hint: {'center_x': 0.5, 'y': 0.8}
 
     MDLabel:
-        id: lbl_winner
+        id: lbl_msg
         text: ""
         font_name: "fonts/Rajdhani-Regular.ttf"
         theme_text_color: "Custom"
-        text_color: utils.get_color_from_hex('#E58E0B')
+        text_color: utils.get_color_from_hex('#BA7E23')
         font_size: 24
-        font_weight: "bold"
         size_hint: None, None
         width: root.width
         halign: "center"

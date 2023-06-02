@@ -2,6 +2,7 @@ from time import time
 from typing import List
 
 from kivymd.app import MDApp
+from kivy.utils import get_color_from_hex
 from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.image import Image
@@ -13,10 +14,6 @@ from handtracking import HandDetector
 from handtracking.utils import detect_skin, statistical_mode
 
 from games import nearestNumber
-
-global lbl_timer
-
-# TODO: configurar jogo
 
 class NearestNumberApp(MDApp):
     def build(self):
@@ -69,19 +66,29 @@ class NearestNumberApp(MDApp):
 
                 if(time_left <= 0):
                     self.start_game_flag = False
-                    print(f"Dedos: {self.amount_fingers}")
-                    print(f"Moda dedos: {statistical_mode(self.amount_fingers)}")
+
+                    guess_one: int = self.root.ids.txt_player_one.text
+                    guess_two: int = self.root.ids.txt_player_two.text
                     
-                    if(evenOdd.is_even(statistical_mode(self.amount_fingers))):
-                        self.root.ids.lbl_winner.text = "O jogador que escolheu PAR venceu!"
-                    else:
-                        self.root.ids.lbl_winner.text = "O jogador que escolheu ÍMPAR venceu!"
+                    mode: int = statistical_mode(self.amount_fingers)
+
+                    validation_message: str = nearestNumber.validation(guess_one, guess_two)
+
+                    if(validation_message):
+                        self.root.ids.lbl_msg.text_color = get_color_from_hex('#EB1212')
+                        self.root.ids.lbl_msg.text = validation_message
+
+                        return
+
+                    winner_message: str = nearestNumber.nearest_number(int(guess_one), int(guess_two), mode)
+
+                    print(f"Moda dedos: {mode}")
+
+                    self.root.ids.lbl_msg.text = winner_message
                     
                     self.amount_fingers.clear()
-
-                    self.root.ids.lbl_timer.text = ""
                 else:
-                    self.root.ids.lbl_timer.text = f"Iniciando em: {int(time_left)}s"
+                    self.root.ids.lbl_msg.text = f"Iniciando em: {int(time_left)}s"
 
             buffer = flip(image_with_landmarks, -1).tostring()
             
@@ -100,6 +107,6 @@ class NearestNumberApp(MDApp):
                 self.root.ids.lbl_fps.text = f"FPS: {int(fps)}"
 
     def start_game(self) -> None:
-        self.root.ids.lbl_winner.text = ""
+        self.root.ids.lbl_msg.text = ""
         self.start_game_flag = True
         self.start_timer: float = time()
