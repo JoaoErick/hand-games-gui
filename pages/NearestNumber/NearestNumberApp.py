@@ -107,6 +107,7 @@ class NearestNumberApp(MDApp):
                 self.root.ids.lbl_fps.text = f"FPS: {int(fps)}"
 
     def start_game(self) -> None:
+        self.root.ids.lbl_msg.text_color = get_color_from_hex('#BA7E23')
         self.root.ids.lbl_msg.text = ""
         self.start_game_flag = True
         self.start_timer: float = time()
