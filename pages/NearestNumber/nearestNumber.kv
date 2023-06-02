@@ -18,6 +18,28 @@ FloatLayout:
             size: dp(60), dp(60)
             pos_hint: {'center_x': 0.5, 'y': 0.3}
 
+    MDTextField:
+        id: txt_player_one
+        hint_text: "Jogador 1"
+        mode: "rectangle"
+        max_text_length: 2
+        required: True
+        helper_text_mode: "on_error"
+        helper_text: "Informe o número!"
+        size_hint: None, None
+        pos_hint: {'x': 0.04, 'y': 0.5}
+    
+    MDTextField:
+        id: txt_player_two
+        hint_text: "Jogador 2"
+        mode: "rectangle"
+        max_text_length: 2
+        required: True
+        helper_text_mode: "on_error"
+        helper_text: "Informe o número!"
+        size_hint: None, None
+        pos_hint: {'x': 0.04, 'y': 0.35}
+
     MDRaisedButton:
         id: btn_play
         text: "JOGAR"
@@ -27,7 +49,8 @@ FloatLayout:
         font_size: 18
         md_bg_color: utils.get_color_from_hex('#D9D9D9')
         size_hint: None, None
-        pos_hint: {'x': 0.04, 'y': 0.5}
+        pos_hint: {'x': 0.04, 'y': 0.23}
+        padding: 24, 0
         on_release: app.start_game()
 
     MDLabel:
