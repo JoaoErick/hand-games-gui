@@ -29,19 +29,6 @@ FloatLayout:
         on_release: app.start_game()
 
     MDLabel:
-        id: lbl_timer
-        text: ""
-        theme_text_color: "Custom"
-        text_color: utils.get_color_from_hex('#2F2F2F')
-        font_name: "fonts/Rajdhani-Regular.ttf"
-        font_size: 18
-        bold: True
-        width: 100
-        size_hint: None, None
-        halign: "center"
-        pos_hint: {'x': 0.03, 'y': 0.3}
-
-    MDLabel:
         id: lbl_fps
         text: ""
         theme_text_color: "Custom"
@@ -83,11 +70,11 @@ FloatLayout:
             pos_hint: {'center_x': 0.5, 'y': 0.8}
 
     MDLabel:
-        id: lbl_winner
+        id: lbl_msg
         text: ""
         font_name: "fonts/Rajdhani-Regular.ttf"
         theme_text_color: "Custom"
-        text_color: utils.get_color_from_hex('#E58E0B')
+        text_color: utils.get_color_from_hex('#BA7E23')
         font_size: 24
         font_weight: "bold"
         size_hint: None, None

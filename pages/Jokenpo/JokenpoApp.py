@@ -2,6 +2,7 @@ from time import time
 from typing import List
 
 from cv2 import VideoCapture, flip
+from kivy.utils import get_color_from_hex
 from kivy.lang import Builder
 from kivy.clock import Clock
 from kivy.uix.image import Image
@@ -65,11 +66,17 @@ class JokenpoApp(MDApp):
                     hands: List = self.hand_detector.find_positions()
                     jokenpo: Jokenpo = Jokenpo(self.hand_detector, hands)
 
-                    self.root.ids.lbl_winner.text = jokenpo.start_game()
+                    message: str = jokenpo.start_game()
 
-                    self.root.ids.lbl_timer.text = ""
+                    if(not message):
+                        self.root.ids.lbl_msg.text_color = get_color_from_hex('#EB1212')
+                        self.root.ids.lbl_msg.text = "O símbolo jogado não foi reconhecido"
+
+                        return
+
+                    self.root.ids.lbl_msg.text = message
                 else:
-                    self.root.ids.lbl_timer.text = f"Iniciando em: {int(time_left)}s"
+                    self.root.ids.lbl_msg.text = f"Iniciando em: {int(time_left)}s"
 
             buffer = flip(image_with_landmarks, -1).tostring()
             
@@ -88,6 +95,7 @@ class JokenpoApp(MDApp):
                 self.root.ids.lbl_fps.text = f"FPS: {int(fps)}"
 
     def start_game(self) -> None:
-        self.root.ids.lbl_winner.text = ""
+        self.root.ids.lbl_msg.text_color = get_color_from_hex('#BA7E23')
+        self.root.ids.lbl_msg.text = ""
         self.start_game_flag = True
         self.start_timer: float = time()

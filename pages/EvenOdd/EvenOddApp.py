@@ -71,15 +71,14 @@ class EvenOddApp(MDApp):
                     print(f"Moda dedos: {statistical_mode(self.amount_fingers)}")
                     
                     if(evenOdd.is_even(statistical_mode(self.amount_fingers))):
-                        self.root.ids.lbl_winner.text = "O jogador que escolheu PAR venceu!"
+                        self.root.ids.lbl_msg.text = "O jogador que escolheu PAR venceu!"
                     else:
-                        self.root.ids.lbl_winner.text = "O jogador que escolheu ÍMPAR venceu!"
+                        self.root.ids.lbl_msg.text = "O jogador que escolheu ÍMPAR venceu!"
                     
                     self.amount_fingers.clear()
 
-                    self.root.ids.lbl_timer.text = ""
                 else:
-                    self.root.ids.lbl_timer.text = f"Iniciando em: {int(time_left)}s"
+                    self.root.ids.lbl_msg.text = f"Iniciando em: {int(time_left)}s"
 
             buffer = flip(image_with_landmarks, -1).tostring()
             
@@ -98,6 +97,6 @@ class EvenOddApp(MDApp):
                 self.root.ids.lbl_fps.text = f"FPS: {int(fps)}"
 
     def start_game(self) -> None:
-        self.root.ids.lbl_winner.text = ""
+        self.root.ids.lbl_msg.text = ""
         self.start_game_flag = True
         self.start_timer: float = time()
