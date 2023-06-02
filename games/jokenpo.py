@@ -45,6 +45,8 @@ class Jokenpo:
                     return "Jogador que jogou PEDRA venceu!"
                 elif(moves[0] == 3 and moves[1] == 2):
                     return "Jogador que jogou TESOURA venceu!"
+                else:
+                    return None
 
     def __player_move(self, hand: List[Dict]) -> int:
         """ Indica qual foi a jogada de um jogador.
